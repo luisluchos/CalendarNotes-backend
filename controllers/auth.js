@@ -3,7 +3,7 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const { generateJWT } = require("../helpers/jwt");
 
-const createUser = async (req, res = reponse) => {
+const createUser = async (req, res = response) => {
   const { email, password } = req.body;
 
   try {
@@ -26,8 +26,6 @@ const createUser = async (req, res = reponse) => {
     //generar token
     const token = await generateJWT(user.id, user.name);
 
-    console.log("token:", token);
-
     return res.status(201).json({
       ok: true,
       uid: user.id,
@@ -42,7 +40,7 @@ const createUser = async (req, res = reponse) => {
   }
 };
 
-const login = async (req, res = reponse) => {
+const login = async (req, res = response) => {
   const { email, password } = req.body;
 
   try {
@@ -82,10 +80,9 @@ const login = async (req, res = reponse) => {
   }
 };
 
-const renewToken = async (req, res = reponse) => {
+const renewToken = async (req, res = response) => {
   //recogemos el uid que se le pasó a través del middleware validateJWT
   const { uid, name } = req;
-
   //generar token
   const token = await generateJWT(uid, name);
 
