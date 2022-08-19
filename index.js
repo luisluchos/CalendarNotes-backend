@@ -15,7 +15,7 @@ app.use(cors())
 
 
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 9001, () => {
     console.log(`Example app listening on port ${process.env.PORT}`)
 })
 
